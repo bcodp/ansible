@@ -1,0 +1,31 @@
+- name: ads-mysql
+  hosts: db
+  become: yes
+  vars_files:
+    - vars/ads-mysql.yml
+  roles:
+    - { role: geerlingguy.mysql }
+
+- name: ads-elastic
+  hosts: el
+  vars_files:
+    - vars/ads-elastic.yml
+  roles:
+    - geerlingguy.java
+    - geerlingguy.elasticsearch
+
+- name: ads-elastic
+  hosts: app
+  roles:
+    - geerlingguy.docker
+
+- hosts: app
+  tasks:
+    - name: Clone the git repository
+      git:
+        repo: "https://user:pass@durandul.com/root/frontend.git"
+        dest: "/applications/frontend"
+    - name: Clone the Back repository
+      git:
+        repo: "https://user:pass@durandul.com/root/backend.git"
+        dest: "/applications/backend"

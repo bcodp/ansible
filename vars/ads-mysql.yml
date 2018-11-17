@@ -1,0 +1,11 @@
+mysql_root_password: password
+mysql_bind_address: '0.0.0.0'
+mysql_databases:
+  - name: example
+    encoding: latin1
+    collation: latin1_general_ci
+mysql_users:
+  - name: mayeul
+    host: "%"
+    password: password
+    priv: "example.*:ALL"

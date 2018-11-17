@@ -1,0 +1,8 @@
+[db]
+51.15.195.233 ansible_ssh_user=root
+
+[el]
+51.15.131.72 ansible_ssh_user=root
+
+[app]
+163.172.185.224 ansible_ssh_user=root
